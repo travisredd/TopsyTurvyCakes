@@ -41,6 +41,10 @@ namespace TopsyTurvyCakes.Pages.Admin
         [HttpPost]
         public async Task<IActionResult> OnPostAsync()
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
             Recipe.Id = Id.GetValueOrDefault();
             await recipesService.SaveAsync(Recipe);
             //call the recipe page

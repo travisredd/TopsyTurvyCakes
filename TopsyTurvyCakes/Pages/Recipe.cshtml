@@ -38,16 +38,19 @@
                     }
                 </ul>
             </div>
-            @foreach (var step in recipes.DirectionsList)
-            {
-                <div class="directions col-md-8">
-                    <h4>Directions</h4>
-                    <ol>
-                        <li>@step</li>
-                    </ol>
-                </div>
 
-            }
+            <div class="directions col-md-8">
+                <h4>Directions</h4>
+                <ol>
+                    @foreach (var step in recipes.DirectionsList)
+                    {
+
+                        <li>@step</li>
+
+
+                    }
+                </ol>
+            </div>
 
         </div>
 

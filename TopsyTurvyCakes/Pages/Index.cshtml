@@ -1,11 +1,10 @@
 ﻿@page
-@using TopsyTurvyCakes.Models
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 @{
-    Layout = "_Layout";
+    //Layout = "_Layout";
     //create variables
-    var recipesService = new RecipesService();
-    var recipes = await recipesService.GetAllAsync();
+    //var recipesService = new RecipesService();
+    var recipes = await RecipesServices.GetAllAsync();
 }
 @section Title  {
     <h2 class="title">My Favorite Recipes</h2>

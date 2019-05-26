@@ -1,13 +1,14 @@
 ﻿@page "{id}"
-@using TopsyTurvyCakes.Models
+
 
 @{ 
-    Layout = "_Layout";
+    //Layout = "_Layout";
     //create variables
     var id = long.Parse((string)RouteData.Values["id"]);
 
     var recipesService = new RecipesService();
     var recipes = await recipesService.FindAsync(id);
+    ViewData["Title"] = recipes.Name;
 }
 
 

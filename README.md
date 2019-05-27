@@ -5,3 +5,5 @@ Challenge:
 3. Create a page contact or about. (contact page - done)
 
 Same issue with the bootstrap and css working in the IIS but not in the Azure deployment. I saw your notes and I am trying to figure that out. 
+
+Is that a problem in my Azure configuration settings or my Visual Studio profile settings? 

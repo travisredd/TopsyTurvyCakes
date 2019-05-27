@@ -21,6 +21,12 @@ namespace TopsyTurvyCakes.Pages.Admin
         //instantiate a new copy of the recipe - create a new recipe
         public Recipe Recipe { get; set; }
 
+        [BindProperty]
+        public Microsoft.AspNetCore.Http.IFormFile newImage { get; set; }
+
+        [BindProperty]
+        public Microsoft.AspNetCore.Http.IFormFile Image { get; set; }
+
         public IRecipesService recipesService { get; set; }
         
         //has connection to the recipeService
@@ -45,10 +51,16 @@ namespace TopsyTurvyCakes.Pages.Admin
             {
                 return Page();
             }
-            Recipe.Id = Id.GetValueOrDefault();
-            await recipesService.SaveAsync(Recipe);
+            //Recipe.Id = Id.GetValueOrDefault();
+            var newRecipe = recipesService.Find(Id.GetValueOrDefault()) ?? new Recipe();
+            newRecipe.Description = Recipe.Description;
+            newRecipe.Directions = Recipe.Directions;
+            newRecipe.Ingredients = Recipe.Ingredients;
+            newRecipe.SetImage(Image);
+
+            await recipesService.SaveAsync(newRecipe);
             //call the recipe page
-            return RedirectToPage("/Recipe", new { id = Recipe.Id });
+            return RedirectToPage("/Recipe", new { id = newRecipe.Id });
         }
 
         public async Task<IActionResult> OnPostDelete()
